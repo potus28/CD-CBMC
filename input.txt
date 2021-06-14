@@ -1,0 +1,10 @@
+title = Octane_CBMC
+ensemble = NVT
+cycles = 10
+temp = 298.0
+box = 10.0
+coordfile = octane.xyz
+ff = TraPPE
+ff_file = trappe_octane.csv
+coulomb = Ewald
+rcut = 14.0
