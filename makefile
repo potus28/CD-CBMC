@@ -1,6 +1,6 @@
 FC=gfortran
 
-FCFLAGS=-O3
+FCFLAGS=-O3 -std=f008
 
 
 main.out: main.o
