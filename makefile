@@ -1,16 +1,14 @@
 FC=gfortran
+FCFLAGS=-O3 -std=f2008
 
-FCFLAGS=-O3 -std=f008
-
-
-main.out: main.o
+main.out: obj/main.o
 	mkdir -p exe
-	${FC} ${FCFLAGS} objects/main.o -o exe/main.out
+	${FC} ${FCFLAGS} obj/main.o -o exe/main.out
 
-main.o: main.f90	
+main.o: src/main.f90	
 	mkdir -p objects
-	${FC} ${FCFLAGS} -c src/main.f90 -o objects/main.o
+	${FC} ${FCFLAGS} -c src/main.f90 -o obj/main.o
 
 clean:
 	rm -r exe
-	rm -r objects
+	rm -r obj

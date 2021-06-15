@@ -18,7 +18,7 @@ contains
         integer :: cycles
         double precision :: temp
         double precision :: box
-        character (len=20):: coordfile
+        character (len=20):: coordfile, coordfileformat
         character (len=20):: ff
         character (len=20):: ff_file
         character (len=20):: coulomb
@@ -86,6 +86,10 @@ contains
                     read(variable_value, *, iostat=error_stat) rcut
                     print *, 'Read rcut: ', rcut
 
+                case ('coordfileformat')
+                    read(variable_value, *, iostat=error_stat) coordfileformat
+                    print *, 'Read Coordfileformat: ', coordfileformat
+
                 case default
                     print *, 'Skipping invalid label at line', line_number
             
@@ -96,6 +100,20 @@ contains
         end do
     
     end subroutine read_user_input
+
+
+    subroutine read_atomic_coordinates(coord_file_name, coord_file_format)
+        implicit none
+        character (len=10) :: coord_file_format
+        character (len=20) :: coord_file_name
+
+        select case(coord_file_format)
+        case('xyz')
+            print *, "Reading Coordinates from XYZ file"
+            call read_xyz(coord_file_name)
+        end select
+
+    end subroutine read_atomic_coordinates
 
 
 
